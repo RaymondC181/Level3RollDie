@@ -78,27 +78,29 @@ function threeDie()
 function roll()
 {
     amountOfRolls = (document.getElementById("num")); 
-    if(dieOne)
-    {
-        firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-    }
-    if(dieTwo)
-    {
-        firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-        secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-    }
-    if(dieThree)
-    {
-        firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-        secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-        thirdDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-    }
+    rollXTimes(amountOfRolls);
+    
+}
 
-    console.clear();
-    console.log(firstDie);
-    console.log(secondDie);
-    console.log(thirdDie);
-
+function rollXTimes(x)
+{
+    for (i = 0; i < x; i++) {
+        if(dieOne)
+        {
+            firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+        }
+        if(dieTwo)
+        {
+            firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+            secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+        }
+        if(dieThree)
+        {
+            firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+            secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+            thirdDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+        }
+    }       
 }
 
 
