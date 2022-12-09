@@ -7,24 +7,30 @@
     <title>Roll Dice</title>
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="initialize();">
     <h1>Roll Roll Roll Your Dice</h1>
     <p>Amount of Die:</p>
     <form>
-        <input type="radio" id="one" name="dieNum">
+        <input type="radio" id="one" name="dieNum" onclick = "oneDie();" checked="true">
         <label for="one">One</label><br>
 
-        <input type="radio" id="two" name="dieNum">
+        <input type="radio" id="two" name="dieNum" onclick = "twoDie();">
         <label for="two">Two</label><br>
 
-        <input type="radio" id="three" name="dieNum">
+        <input type="radio" id="three" name="dieNum" onclick = "threeDie();">
         <label for="three">Three</label><br>
     </form>
     <br>
-    <label for="fname">Amount of time:</label><br>
-    <p id="num">0</p>
+
+    <p>Amount of times:</p>
+    <p id="num"> 1 </p>
     <button onclick="add();">+1</button>
     <button onclick = "minus();">-1</button>
 
+    <button onclick = "roll();">Roll</button>
+
+    <table id = table>
+        
+    </table>
 </body>
 </html>
