@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roll Dice</title>
     <script src="script.js"></script>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            border: thin solid black;
+        }
+        th, td{
+            border: thin solid black;
+        }
+    </style>
 </head>
 <body onload="initialize();">
     <h1>Roll Roll Roll Your Dice</h1>
@@ -23,11 +34,18 @@
     <br>
 
     <p>Amount of times:</p>
-    <p id="num"> 1 </p>
+    <p id="num"> 0 </p>
     <button onclick="add();">+1</button>
     <button onclick = "minus();">-1</button>
-
     <button onclick = "roll();">Roll</button>
+    
+    <table id = "dicetable">
+        <tr>
+            <th>Die 1</th>
+            <th>Die 2</th>
+            <th>Die 3</th>
+        </tr>
+    </table>
 
 </body>
 </html>

@@ -16,6 +16,7 @@ function initialize()
     dieTwo = false; 
     dieThree = false; 
     
+    diceTable = document.getElementById("dicetable");
 }
 
 function add()
@@ -77,8 +78,9 @@ function threeDie()
 
 function roll()
 {
-    amountOfRolls = (document.getElementById("num")); 
-    rollXTimes(amountOfRolls);
+    console.clear();
+    console.log("Roll Amount Per Die: " + rollingNum);
+    rollXTimes(rollingNum);
     
 }
 
@@ -88,17 +90,42 @@ function rollXTimes(x)
         if(dieOne)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+
+            if(table.getElementsByTagName("tr").length > 6){
+                diceTable.deleteRow(2);                                            //<-- delete rows if num of rolls > 6
+            }
+            var newRow = diceTable.insertRow();
+            var newCell = newRow.insertCell();
+            newCell.innerHTML = firstDie;
         }
         if(dieTwo)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
             secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+
+
+            var newRow = diceTable.insertRow();
+            var newCell = newRow.insertCell();
+            newCell.innerHTML = firstDie;
+
+            var newCell = newRow.insertCell();
+            newCell.innerHTML = secondDie;
         }
         if(dieThree)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
             secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
             thirdDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+
+            var newRow = diceTable.insertRow();
+            var newCell = newRow.insertCell();
+            newCell.innerHTML = firstDie;
+
+            var newCell = newRow.insertCell();
+            newCell.innerHTML = secondDie;
+
+            var newCell = newRow.insertCell();
+            newCell.innerHTML = thirdDie;
         }
     }       
 }
