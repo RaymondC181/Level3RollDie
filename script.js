@@ -1,7 +1,7 @@
 dieOne = false; 
 dieTwo = false; 
 dieThree = false; 
-
+y=0;
 
 firstDie = 1; 
 secondDie = 1; 
@@ -81,6 +81,7 @@ function roll()
     console.clear();
     console.log("Roll Amount Per Die: " + rollingNum);
     rollXTimes(rollingNum);
+    y++;
     
 }
 
@@ -91,8 +92,8 @@ function rollXTimes(x)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
 
-            if(table.getElementsByTagName("tr").length > 6){
-                diceTable.deleteRow(2);                                            //<-- delete rows if num of rolls > 6
+            if(y > 6){
+                diceTable.deleteRow(1);                                           //<-- delete rows if num of rows > 6
             }
             var newRow = diceTable.insertRow();
             var newCell = newRow.insertCell();
