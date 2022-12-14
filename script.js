@@ -1,11 +1,25 @@
 dieOne = false; 
 dieTwo = false; 
 dieThree = false; 
-y=0;
 
 firstDie = 1; 
 secondDie = 1; 
 thirdDie = 1; 
+
+total = 0;
+totalCounter = 0; 
+oneCounter=0;
+twoCounter=0;
+threeCounter=0;
+fourCounter=0;
+fiveCounter=0;
+sixCounter=0;
+doubleCounter = 0;
+tripleCounter = 0;
+
+
+var arrayNum = new Array();
+
 
 function initialize()
 {
@@ -17,6 +31,11 @@ function initialize()
     dieThree = false; 
     
     diceTable = document.getElementById("dicetable");
+    doubles = document.getElementById("double"); 
+    triples = document.getElementById("triple");
+    mean = document.getElementById("Mean");
+    mode = document.getElementById("Mode");
+    median = document.getElementById("Median"); 
 }
 
 function add()
@@ -31,6 +50,11 @@ function add()
 function display()
 {
     numRolls.innerHTML = rollingNum; 
+    mean.innerHTML = (total/totalCounter).toFixed(2);
+    mode.innerHTML = findMode();
+    median.innerHTML = findMedian();
+    doubles.innerHTML = doubleCounter; 
+    triples.innerHTML = tripleCounter; 
 }
 
 function minus()
@@ -81,8 +105,8 @@ function roll()
     console.clear();
     console.log("Roll Amount Per Die: " + rollingNum);
     rollXTimes(rollingNum);
-    y++;
-    
+    totalCounter += rollingNum;
+    display(); 
 }
 
 function rollXTimes(x)
@@ -91,19 +115,28 @@ function rollXTimes(x)
         if(dieOne)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
-
-            if(y > 6){
-                diceTable.deleteRow(1);                                           //<-- delete rows if num of rows > 6
+            
+            if(diceTable.rows.length > 6){
+                diceTable.deleteRow(1);                                     
             }
+
             var newRow = diceTable.insertRow();
             var newCell = newRow.insertCell();
             newCell.innerHTML = firstDie;
+
+            total+=firstDie; 
+            arrayNum.push(firstDie);
+
         }
         if(dieTwo)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
             secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
 
+            if(diceTable.rows.length > 12){
+                diceTable.deleteRow(1);               
+                                    
+            }
 
             var newRow = diceTable.insertRow();
             var newCell = newRow.insertCell();
@@ -111,12 +144,28 @@ function rollXTimes(x)
 
             var newCell = newRow.insertCell();
             newCell.innerHTML = secondDie;
+            
+            total+=firstDie; 
+            total += secondDie;
+            arrayNum.push(firstDie);
+            arrayNum.push(secondDie);
+
+            if(firstDie==secondDie)
+            {
+                doubleCounter++;
+            }
+
         }
         if(dieThree)
         {
             firstDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
             secondDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
             thirdDie = parseInt((Math.random() * (6 - 1 + 1) + 1))
+
+            if(dicetable.rows.length > 18){
+                diceTable.deleteRow(1);                
+               
+            }
 
             var newRow = diceTable.insertRow();
             var newCell = newRow.insertCell();
@@ -127,8 +176,99 @@ function rollXTimes(x)
 
             var newCell = newRow.insertCell();
             newCell.innerHTML = thirdDie;
+
+            total += secondDie;
+            total+=thirdDie;
+            arrayNum.push(firstDie);
+            arrayNum.push(secondDie);
+            arrayNum.push(thirdDie);
+
+            if(firstDie==secondDie && firstDie==thirdDie && secondDie==thirdDie)
+            {
+                tripleCounter++;
+            }
         }
     }       
 }
 
+function counter()
+{
+    for (index = 0; index < arrayNum.length; index++)
+    {
+        if(arrayNum[index]==(1))
+        {
+            oneCounter++;
+        }
+        if(arrayNum[index]==(2))
+        {
+            twoCounter++;
+        }
+        if(arrayNum[index]==(3))
+        {
+            threeCounter++;
+        }
+        if(arrayNum[index]==(4))
+        {
+            fourCounter++;
+        }
+        if(arrayNum[index]==(5))
+        {
+            fiveCounter++;
+        }
+        if(arrayNum[index]==(6))
+        {
+            sixCounter++;
+        }  
+    }
+}
+
+function findMode()
+{
+    counter();
+    max = 0; 
+    let arrayName = [oneCounter, twoCounter, threeCounter, fourCounter, fiveCounter, sixCounter];
+    for (index = 0; index < arrayName.length; index++)
+    {
+        if(arrayName[index]>max)
+        {
+            max = arrayName[index]; 
+        }
+    }
+
+    if(max==(oneCounter))
+    {
+        return 1; 
+    }
+    else if (max==(twoCounter))
+    {
+        return 2; 
+    }
+    else if(max==(threeCounter))
+    {
+        return 3; 
+    }
+    else if(max==(fourCounter))
+    {
+        return 4; 
+    }
+    else if(max==(fiveCounter))
+    {
+        return 5; 
+    }
+    else
+    {
+        return 6; 
+    }
+
+}
+
+
+function findMedian()
+{
+    arrayNum.sort();
+    let len = arrayNum.length;
+    middleIndex = parseInt(len / 2); 
+    m = arrayNum[middleIndex];
+    return m;
+}
 
