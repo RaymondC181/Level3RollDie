@@ -18,6 +18,10 @@ doubleCounter = 0;
 tripleCounter = 0;
 
 
+dieOneCount = 0;
+dieTwoCount = 0;
+dieThreeCount = 0;
+
 var arrayNum = new Array();
 var diceRow = new Array();
 
@@ -36,6 +40,11 @@ function initialize()
     mean = document.getElementById("Mean");
     mode = document.getElementById("Mode");
     median = document.getElementById("Median"); 
+
+    dieonecounter = document.getElementById("dieOneCounter");
+    dietwocounter = document.getElementById("dieTwoCounter");
+    diethreecounter = document.getElementById("dieThreeCounter");
+
 }
 
 function add()
@@ -55,6 +64,11 @@ function display()
     median.innerHTML = findMedian();
     doubles.innerHTML = doubleCounter; 
     triples.innerHTML = tripleCounter; 
+    dieonecounter.innerHTML = dieOneCount;
+    dietwocounter.innerHTML = dieTwoCount;
+    diethreecounter.innerHTML = dieThreeCount;
+
+
 }
 
 function minus()
@@ -129,6 +143,8 @@ function rollXTimes(x)
             arrayNum.push(firstDie);
             diceRow.push(firstDie);
 
+            dieOneCount++;
+
         }
         if(dieTwo)
         {
@@ -158,6 +174,8 @@ function rollXTimes(x)
             {
                 doubleCounter++;
             }
+            dieOneCount++;
+            dieTwoCount++;
 
         }
         if(dieThree)
@@ -194,6 +212,11 @@ function rollXTimes(x)
             {
                 tripleCounter++;
             }
+
+            dieOneCount++;
+            dieTwoCount++;
+            dieThreeCount++;
+
         }
     }       
 }

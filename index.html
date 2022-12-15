@@ -16,6 +16,14 @@
         th, td{
             border: thin solid black;
         }
+
+        .grid_container{
+            display: flex;
+            float: center;
+            width: 50%;
+            padding: 5px;
+        }
+
     </style>
 </head>
 <body onload="initialize();">
@@ -55,6 +63,35 @@
             <th id = Median>0</th>
         </tr>
     </table>
+
+    <div class = grid_container>
+        <table id = "diceOne">
+            <tr>
+                <th>Die 1</th>
+            </tr>
+            <tr>
+                <th id = "dieOneCounter">0</th>
+            </tr>
+        </table>
+    
+        <table id = "diceTwo">
+            <tr>
+                <th>Die 2</th>
+            </tr>
+            <tr>
+                <th id = "dieTwoCounter">0</th>
+            </tr>
+        </table>
+    
+        <table id = "diceThree">
+            <tr>
+                <th>Die 3</th>
+            </tr>
+            <tr>
+                <th id = "dieThreeCounter">0</th>
+            </tr>
+        </table>
+    </div>
 
     <table id = "dicetable" style="margin-left:auto;margin-right:auto;margin-top: 25px;">
         <tr>
