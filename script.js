@@ -19,7 +19,7 @@ tripleCounter = 0;
 
 
 var arrayNum = new Array();
-
+var diceRow = new Array();
 
 function initialize()
 {
@@ -107,6 +107,7 @@ function roll()
     rollXTimes(rollingNum);
     totalCounter += rollingNum;
     display(); 
+    console.log(diceRow);
 }
 
 function rollXTimes(x)
@@ -126,6 +127,7 @@ function rollXTimes(x)
 
             total+=firstDie; 
             arrayNum.push(firstDie);
+            diceRow.push(firstDie);
 
         }
         if(dieTwo)
@@ -149,6 +151,8 @@ function rollXTimes(x)
             total += secondDie;
             arrayNum.push(firstDie);
             arrayNum.push(secondDie);
+            diceRow.push(firstDie);
+            diceRow.push(secondDie);
 
             if(firstDie==secondDie)
             {
@@ -182,6 +186,9 @@ function rollXTimes(x)
             arrayNum.push(firstDie);
             arrayNum.push(secondDie);
             arrayNum.push(thirdDie);
+            diceRow.push(firstDie);
+            diceRow.push(secondDie);
+            diceRow.push(thirdDie);
 
             if(firstDie==secondDie && firstDie==thirdDie && secondDie==thirdDie)
             {
